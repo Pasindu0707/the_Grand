@@ -165,14 +165,18 @@ body {
   width: 4.5rem;
 }
 
-/* Hero stills drift slowly while they are the active slide. */
-@keyframes slow-drift {
-  from { transform: scale(1.0) translate3d(0, 0, 0); }
-  to { transform: scale(1.12) translate3d(0, -1.2%, 0); }
+/* Hero stills push in slowly while they are the active slide.
+   This is a transition, not an animation: a keyframe animation is removed
+   the moment the slide stops being active, which snapped the image back to
+   its start scale mid-crossfade. Easing both ways means the outgoing frame
+   keeps drifting while it fades. */
+[data-slide] img {
+  transform: scale(1);
+  transition: transform 9s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-[data-drift="true"] img {
-  animation: slow-drift 14s ease-out forwards;
+[data-slide="active"] img {
+  transform: scale(1.09);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -192,8 +196,10 @@ body {
     transition: none;
   }
 
-  [data-drift="true"] img {
-    animation: none;
+  [data-slide] img,
+  [data-slide="active"] img {
+    transform: none;
+    transition: none;
   }
 }
 

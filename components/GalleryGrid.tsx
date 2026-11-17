@@ -4,13 +4,19 @@ import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import type { Photo } from "@/lib/images";
 
+const columnClasses: Record<3 | 4 | 6, string> = {
+  3: "sm:grid-cols-3",
+  4: "sm:grid-cols-3 lg:grid-cols-4",
+  6: "sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6",
+};
+
 export default function GalleryGrid({
   photos,
   columns = 4,
   frameClassName = "",
 }: {
   photos: Photo[];
-  columns?: 3 | 4;
+  columns?: 3 | 4 | 6;
   frameClassName?: string;
 }) {
   const [open, setOpen] = useState<number | null>(null);
@@ -40,9 +46,7 @@ export default function GalleryGrid({
   return (
     <>
       <div
-        className={`grid grid-cols-2 gap-3 sm:gap-4 ${
-          columns === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"
-        }`}
+        className={`grid grid-cols-2 gap-3 sm:gap-4 ${columnClasses[columns]}`}
       >
         {photos.map((photo, i) => (
           <button
@@ -56,7 +60,7 @@ export default function GalleryGrid({
               src={photo.src}
               alt={photo.alt}
               fill
-              sizes="(min-width: 1024px) 25vw, 50vw"
+              sizes="(min-width: 1280px) 17vw, (min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
               className="object-cover transition duration-700 ease-out group-hover:scale-[1.05]"
             />
             <span

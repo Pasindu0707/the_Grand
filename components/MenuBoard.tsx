@@ -46,14 +46,14 @@ export default function MenuBoard({ sections }: { sections: MenuSection[] }) {
         role="tabpanel"
         id={`menu-panel-${active.id}`}
         aria-labelledby={`menu-tab-${active.id}`}
-        className="mt-10 grid gap-10 lg:grid-cols-[1fr_22rem] lg:gap-16"
+        className="mt-10 grid gap-10 lg:grid-cols-[1fr_24rem] lg:gap-16 xl:grid-cols-[1fr_30rem]"
       >
         <div>
           <p className="mb-8 text-[0.72rem] font-bold tracking-[0.24em] uppercase text-caramel">
             {active.kicker}
           </p>
 
-          <ul className="space-y-7">
+          <ul className="space-y-7 xl:grid xl:grid-cols-2 xl:gap-x-12 xl:gap-y-8 xl:space-y-0">
             {active.items.map((item) => (
               <li key={item.name}>
                 <div className="flex items-baseline gap-3">
@@ -85,13 +85,13 @@ export default function MenuBoard({ sections }: { sections: MenuSection[] }) {
           </p>
         </div>
 
-        <div className="relative hidden aspect-[3/4] overflow-hidden lg:block">
+        <div className="relative hidden aspect-[3/4] overflow-hidden lg:block xl:aspect-[4/5]">
           <Image
             key={active.photo.src}
             src={active.photo.src}
             alt={active.photo.alt}
             fill
-            sizes="22rem"
+            sizes="(min-width: 1280px) 30rem, 24rem"
             className="object-cover"
           />
           <span

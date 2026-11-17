@@ -129,8 +129,8 @@ export default function GastrobarPage() {
           aria-labelledby="story-heading"
           className="scroll-mt-16 bg-paper text-ink"
         >
-          <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-            <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:gap-20">
+          <div className="mx-auto max-w-[84rem] px-5 py-20 sm:px-8 sm:py-28">
+            <div className="grid gap-12 lg:grid-cols-[minmax(0,32rem)_1fr] lg:items-center lg:gap-16 xl:gap-24">
               <Reveal variant="slide" className="order-2 lg:order-1">
                 <div id="story-heading">
                   <SectionHeading
@@ -156,24 +156,35 @@ export default function GastrobarPage() {
 
               {/* Offset photo pair - the overhead plate over the room */}
               <Reveal variant="curtain" delay={120} className="order-1 lg:order-2">
-                <div className="relative">
-                  <div className="relative aspect-[4/5] overflow-hidden">
+                <div className="grid grid-cols-5 gap-4 sm:gap-5">
+                  <div className="relative col-span-5 aspect-[4/5] overflow-hidden sm:col-span-3">
                     <Image
                       src={venue.aboutPhoto.src}
                       alt={venue.aboutPhoto.alt}
                       fill
-                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      sizes="(min-width: 1024px) 34vw, 100vw"
                       className="object-cover"
                     />
                   </div>
-                  <div className="relative -mt-20 ml-auto hidden aspect-[4/3] w-1/2 overflow-hidden border-8 border-paper sm:block">
-                    <Image
-                      src={gastrobarRooms[3].src}
-                      alt={gastrobarRooms[3].alt}
-                      fill
-                      sizes="25vw"
-                      className="object-cover"
-                    />
+                  <div className="col-span-5 grid grid-cols-2 gap-4 sm:col-span-2 sm:grid-cols-1 sm:grid-rows-2 sm:gap-5">
+                    <div className="relative aspect-[4/3] overflow-hidden sm:aspect-auto">
+                      <Image
+                        src={gastrobarRooms[3].src}
+                        alt={gastrobarRooms[3].alt}
+                        fill
+                        sizes="(min-width: 1024px) 22vw, 50vw"
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="relative aspect-[4/3] overflow-hidden sm:aspect-auto">
+                      <Image
+                        src={gastrobarRooms[1].src}
+                        alt={gastrobarRooms[1].alt}
+                        fill
+                        sizes="(min-width: 1024px) 22vw, 50vw"
+                        className="object-cover"
+                      />
+                    </div>
                   </div>
                 </div>
               </Reveal>
@@ -208,7 +219,7 @@ export default function GastrobarPage() {
           aria-labelledby="menu-heading"
           className="scroll-mt-16 bg-espresso-950"
         >
-          <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+          <div className="mx-auto max-w-[84rem] px-5 py-20 sm:px-8 sm:py-28">
             <Reveal variant="mask" className="mb-12 max-w-2xl">
               <div id="menu-heading">
                 <SectionHeading
@@ -234,7 +245,7 @@ export default function GastrobarPage() {
           aria-labelledby="rooms-heading"
           className="bg-espresso-900 py-20 sm:py-28"
         >
-          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="mx-auto max-w-[84rem] px-5 sm:px-8">
             <Reveal variant="mask" className="mb-12 max-w-xl">
               <div id="rooms-heading">
                 <SectionHeading
@@ -261,8 +272,8 @@ export default function GastrobarPage() {
           aria-labelledby="gallery-heading"
           className="scroll-mt-16 bg-espresso-950"
         >
-          <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-            <Reveal variant="mask" className="mb-12 flex flex-wrap items-end justify-between gap-6">
+          <div className="mx-auto max-w-[84rem] px-5 pt-20 sm:px-8 sm:pt-28">
+            <Reveal variant="mask" className="mb-10 flex flex-wrap items-end justify-between gap-6">
               <div id="gallery-heading">
                 <SectionHeading eyebrow={venue.galleryEyebrow} title="Gallery" />
               </div>
@@ -270,8 +281,11 @@ export default function GastrobarPage() {
                 Select any photo to view it larger.
               </p>
             </Reveal>
+          </div>
+
+          <div className="px-3 pb-20 sm:px-4 sm:pb-28">
             <Reveal stagger="deep">
-              <GalleryGrid photos={gastrobarGallery} columns={4} />
+              <GalleryGrid photos={gastrobarGallery} columns={6} />
             </Reveal>
           </div>
         </section>
@@ -282,7 +296,7 @@ export default function GastrobarPage() {
           aria-labelledby="visit-heading"
           className="scroll-mt-16 bg-paper text-ink"
         >
-          <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
+          <div className="mx-auto max-w-[84rem] px-5 py-20 sm:px-8 sm:py-28">
             <Reveal variant="mask" className="mb-14 max-w-xl">
               <div id="visit-heading">
                 <SectionHeading
@@ -360,7 +374,7 @@ export default function GastrobarPage() {
               </Reveal>
 
               {/* Teaser photo */}
-              <Reveal variant="curtain" delay={200} className="relative hidden min-h-64 overflow-hidden lg:block">
+              <Reveal variant="curtain" delay={200} className="relative hidden min-h-72 overflow-hidden lg:block">
                 <Image
                   src={gastrobarKitchen[1].src}
                   alt={gastrobarKitchen[1].alt}
@@ -375,7 +389,7 @@ export default function GastrobarPage() {
               <iframe
                 title={venue.mapTitle}
                 src={venue.mapSrc}
-                className="h-80 w-full border border-ink/15"
+                className="h-80 w-full border border-ink/15 lg:h-[26rem]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
@@ -401,7 +415,7 @@ export default function GastrobarPage() {
                 />
               </Reveal>
 
-              <Reveal variant="curtain" delay={120} className="relative min-h-72 overflow-hidden">
+              <Reveal variant="curtain" delay={120} className="relative min-h-80 overflow-hidden lg:min-h-full">
                 <Image
                   src={gastrobarRooms[2].src}
                   alt={gastrobarRooms[2].alt}
