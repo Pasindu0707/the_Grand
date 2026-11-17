@@ -63,7 +63,7 @@ export default function ResortHomePage() {
           </h1>
           <p className="mt-5 max-w-md text-sand/80">
             A holiday resort, banquet house, and garden venue on open, breezy
-            land — an hour up the coast from Colombo.
+            land - an hour up the coast from Colombo.
           </p>
         </div>
       </Slider>
@@ -108,7 +108,7 @@ export default function ResortHomePage() {
             <p className="mx-auto mt-6 max-w-2xl leading-relaxed text-sand/80">
               Grand Holiday Resort is situated in Wennappuwa amid convenient and
               tranquil surroundings on open land, with a breezy setting along a
-              Dutch canal — creating a relaxing, rich environment for holidays,
+              Dutch canal - creating a relaxing, rich environment for holidays,
               weddings, and gatherings of every size.
             </p>
             <Link
@@ -133,7 +133,7 @@ export default function ResortHomePage() {
           </Reveal>
           <Reveal delay={120}>
             <p className="mt-8 font-display text-3xl leading-snug sm:text-5xl">
-              Be our guest — <em className="text-lagoon-700">make yourself at home.</em>{" "}
+              Be our guest - <em className="text-lagoon-700">make yourself at home.</em>{" "}
               We&rsquo;re glad you&rsquo;re here&hellip;
             </p>
           </Reveal>

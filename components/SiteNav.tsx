@@ -42,6 +42,9 @@ export default function SiteNav({
   const pathname = usePathname();
   const styles = brandStyles[brand];
   const solid = scrolled || !transparentAtTop || menuOpen;
+  /* With a single venue the site root *is* this page, so there is no
+     "all locations" index to go back to. */
+  const hasLocationIndex = homeHref !== "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32);
@@ -66,16 +69,18 @@ export default function SiteNav({
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:h-[4.5rem] sm:px-8">
         <div className="flex items-center gap-3.5">
-          <Link
-            href="/"
-            aria-label="Back to The Grand — all locations"
-            title="Back to The Grand"
-            className="flex size-9 shrink-0 items-center justify-center rounded-full border border-white/25 text-crema/80 transition hover:border-white/50 hover:text-crema"
-          >
-            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden>
-              <path d="M14 8H2m0 0 4.5-4.5M2 8l4.5 4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </Link>
+          {hasLocationIndex && (
+            <Link
+              href="/"
+              aria-label="Back to The Grand - all locations"
+              title="Back to The Grand"
+              className="flex size-9 shrink-0 items-center justify-center rounded-full border border-white/25 text-crema/80 transition hover:border-white/50 hover:text-crema"
+            >
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden>
+                <path d="M14 8H2m0 0 4.5-4.5M2 8l4.5 4.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
+          )}
           <Link href={homeHref} className="group flex items-baseline gap-2.5">
             <span className="font-display text-xl tracking-tight">{wordmark}</span>
             <span
@@ -138,13 +143,15 @@ export default function SiteNav({
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/"
-            onClick={() => setMenuOpen(false)}
-            className="mt-2 block border-t border-white/10 py-3 text-sm font-bold tracking-[0.18em] uppercase text-crema/60"
-          >
-            ← The Grand · All locations
-          </Link>
+          {hasLocationIndex && (
+            <Link
+              href="/"
+              onClick={() => setMenuOpen(false)}
+              className="mt-2 block border-t border-white/10 py-3 text-sm font-bold tracking-[0.18em] uppercase text-crema/60"
+            >
+              ← The Grand · All locations
+            </Link>
+          )}
         </nav>
       )}
     </header>

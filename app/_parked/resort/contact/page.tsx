@@ -8,7 +8,7 @@ import { resortHero } from "@/lib/images";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact Grand Holiday Resort — Vanderlan Mawatha, Kolinjadiya, Wennappuwa, Sri Lanka. Phone 031-225 1051, email grandholiday@sltnet.lk.",
+    "Contact Grand Holiday Resort - Vanderlan Mawatha, Kolinjadiya, Wennappuwa, Sri Lanka. Phone 031-225 1051, email grandholiday@sltnet.lk.",
 };
 
 export default function ResortContactPage() {

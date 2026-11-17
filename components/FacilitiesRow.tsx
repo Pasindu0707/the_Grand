@@ -7,7 +7,7 @@ export default function FacilitiesRow() {
   return (
     <section aria-labelledby="facilities-heading" className="bg-sand">
       <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
-        <Reveal className="mb-12 text-center">
+        <Reveal variant="mask" className="mb-12 text-center">
           <p className="mb-3 text-[0.68rem] font-bold tracking-[0.28em] uppercase text-brass">
             On the grounds
           </p>
@@ -18,7 +18,7 @@ export default function FacilitiesRow() {
 
         <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-4">
           {facilities.map((facility, i) => (
-            <Reveal key={facility.label} delay={i * 90}>
+            <Reveal key={facility.label} delay={i * 110}>
               <Link href={facility.href} className="group block text-center">
                 <span className="relative block aspect-[3/4] overflow-hidden rounded-t-full">
                   <Image

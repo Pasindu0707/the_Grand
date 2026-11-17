@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
 import { Fraunces, Karla } from "next/font/google";
+import {
+  siteDescription,
+  siteName,
+  siteOrigin,
+  siteTitle,
+  siteUrl,
+} from "@/lib/site";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -14,13 +21,35 @@ const karla = Karla({
   variable: "--font-karla",
 });
 
+/*
+ * The site is currently the Gastrobar alone. The other venues live under
+ * app/_parked/ - a private folder, so Next does not route them - and the
+ * family-wide titles come back when they do.
+ */
+
 export const metadata: Metadata = {
+  // Origin only; Next adds basePath to asset URLs itself. Without a
+  // metadataBase the og: image stays relative and unfurlers drop it.
+  metadataBase: new URL(siteOrigin),
   title: {
-    default: "The Grand — Negombo & Wennappuwa, Sri Lanka",
-    template: "%s · The Grand",
+    default: siteTitle,
+    template: "%s · The Grand Gastrobar",
   },
-  description:
-    "One family, two houses of welcome: Grand Espresso coffee lounge in Negombo and Grand Holiday Resort in Wennappuwa, Sri Lanka.",
+  description: siteDescription,
+  openGraph: {
+    type: "website",
+    siteName,
+    title: siteTitle,
+    description: siteDescription,
+    url: siteUrl,
+    locale: "en_LK",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+  },
+  alternates: { canonical: siteUrl },
 };
 
 export default function RootLayout({

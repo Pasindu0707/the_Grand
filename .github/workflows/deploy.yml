@@ -33,11 +33,16 @@ jobs:
 
       - run: npm ci
 
+      - name: Type-check
+        run: npx tsc --noEmit
+
       - name: Build static export
         env:
           # Project sites live at /<repo>; a user/org site (<user>.github.io)
           # would leave this empty.
           NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          # Absolute URL for canonical, robots, sitemap and the og: image.
+          NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.base_url }}
         run: npm run build
 
       - uses: actions/upload-pages-artifact@v3

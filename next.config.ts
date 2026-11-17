@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
   assetPrefix: basePath || undefined,
   trailingSlash: true,
   images: {
-    // Pages is a static host — no Next image optimizer runs there.
+    // Pages is a static host - no Next image optimizer runs there.
     unoptimized: true,
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },

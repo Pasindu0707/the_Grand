@@ -37,7 +37,10 @@ export default function Slider({
         <div
           key={slide.src}
           aria-hidden={i !== index}
-          className={`absolute inset-0 transition-opacity duration-[1400ms] ease-in-out ${
+          // Only the slide on screen drifts; toggling the attribute restarts
+          // the push-in each time a slide comes back around.
+          data-drift={i === index ? "true" : undefined}
+          className={`absolute inset-0 overflow-hidden transition-opacity duration-[1400ms] ease-in-out ${
             i === index ? "opacity-100" : "opacity-0"
           }`}
         >

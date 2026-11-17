@@ -4,3 +4,7 @@ out/
 *.tsbuildinfo
 next-env.d.ts
 .DS_Store
+
+# Original full-size photo drops (web-sized copies live in public/images)
+drive-download-*/
+drive-download-*.zip

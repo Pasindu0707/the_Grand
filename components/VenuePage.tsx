@@ -2,6 +2,7 @@ import Image from "next/image";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import GalleryGrid from "@/components/GalleryGrid";
+import Marquee from "@/components/Marquee";
 import Reveal from "@/components/Reveal";
 import SiteNav from "@/components/SiteNav";
 import Slider from "@/components/Slider";
@@ -75,6 +76,16 @@ export default function VenuePage({
           </Slider>
         </div>
 
+        <Marquee
+          words={[
+            venue.place,
+            venue.callout.title,
+            ...venue.hours.map((h) => `${h.days} · ${h.time}`),
+            "Part of The Grand",
+          ]}
+          className="bg-espresso-900 text-crema/70"
+        />
+
         {/* About */}
         <section
           id="about"
@@ -82,7 +93,7 @@ export default function VenuePage({
           className="scroll-mt-16 bg-paper"
         >
           <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-            <Reveal>
+            <Reveal variant="slide">
               <p className="mb-3 text-[0.68rem] font-bold tracking-[0.28em] uppercase text-caramel">
                 About us
               </p>
@@ -121,7 +132,7 @@ export default function VenuePage({
               </div>
             </Reveal>
 
-            <Reveal delay={120} className="relative self-start lg:mt-8">
+            <Reveal variant="curtain" delay={120} className="relative self-start lg:mt-8">
               <div className="relative aspect-[4/5] overflow-hidden">
                 <Image
                   src={venue.aboutPhoto.src}
@@ -139,14 +150,14 @@ export default function VenuePage({
           </div>
         </section>
 
-        {/* Gallery — the evening band */}
+        {/* Gallery - the evening band */}
         <section
           id="gallery"
           aria-labelledby="gallery-heading"
           className="scroll-mt-16 bg-espresso-950 text-crema"
         >
           <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-            <Reveal className="mb-12 flex flex-wrap items-end justify-between gap-4">
+            <Reveal variant="mask" className="mb-12 flex flex-wrap items-end justify-between gap-4">
               <div>
                 <p className="mb-3 text-[0.68rem] font-bold tracking-[0.28em] uppercase text-caramel">
                   {venue.galleryEyebrow}
@@ -159,7 +170,7 @@ export default function VenuePage({
                 Select any photo to view it larger.
               </p>
             </Reveal>
-            <Reveal>
+            <Reveal stagger="deep">
               <GalleryGrid photos={gallery} columns={4} />
             </Reveal>
           </div>
@@ -172,7 +183,7 @@ export default function VenuePage({
           className="scroll-mt-16 bg-paper"
         >
           <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-            <Reveal className="mb-12">
+            <Reveal variant="mask" className="mb-12">
               <p className="mb-3 text-[0.68rem] font-bold tracking-[0.28em] uppercase text-caramel">
                 Write to us
               </p>
@@ -186,7 +197,7 @@ export default function VenuePage({
                 <ContactForm brand="espresso" withSubject />
               </Reveal>
 
-              <Reveal delay={120}>
+              <Reveal variant="slide-right" delay={120}>
                 <div className="bg-espresso-950 p-8 text-crema sm:p-10">
                   <h3 className="font-display text-2xl">{venue.legalName}</h3>
                   <address className="mt-6 space-y-4 text-[0.95rem] leading-relaxed not-italic text-crema/85">
@@ -217,11 +228,26 @@ export default function VenuePage({
                       </a>
                     </p>
                   </address>
+
+                  <h4 className="mt-9 border-t border-white/15 pt-7 text-[0.66rem] font-bold tracking-[0.24em] uppercase text-caramel">
+                    Opening hours
+                  </h4>
+                  <dl className="mt-4 space-y-3 text-[0.92rem] text-crema/80">
+                    {venue.hours.map((row) => (
+                      <div
+                        key={row.days}
+                        className="flex flex-wrap justify-between gap-x-6 gap-y-1"
+                      >
+                        <dt>{row.days}</dt>
+                        <dd className="text-crema/60 tabular-nums">{row.time}</dd>
+                      </div>
+                    ))}
+                  </dl>
                 </div>
               </Reveal>
             </div>
 
-            <Reveal className="mt-14">
+            <Reveal variant="curtain" className="mt-14">
               <iframe
                 title={venue.mapTitle}
                 src={venue.mapSrc}

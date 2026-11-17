@@ -4,11 +4,11 @@ import SiteNav from "@/components/SiteNav";
 
 export const metadata: Metadata = {
   title: {
-    default: "Grand Holiday Resort — Wennappuwa",
+    default: "Grand Holiday Resort - Wennappuwa",
     template: "%s · Grand Holiday Resort",
   },
   description:
-    "Grand Holiday Resort in Wennappuwa, Sri Lanka — banquets, weddings, an open restaurant, wet bar, pool, and rooms beside a Dutch canal.",
+    "Grand Holiday Resort in Wennappuwa, Sri Lanka - banquets, weddings, an open restaurant, wet bar, pool, and rooms beside a Dutch canal.",
 };
 
 const navLinks = [

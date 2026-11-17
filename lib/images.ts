@@ -1,95 +1,117 @@
+import { asset } from "./site";
+
 export type Photo = { src: string; alt: string };
 
 export const u = (id: string, w = 1600) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
+/* Real photography lives under /public/images/<venue>/ */
+const g = (file: string) => asset(`images/gastrobar/${file}`);
+
+/* ------------------------- The Grand Gastrobar (real) ------------------------ */
+
+export const gastrobarRooms: Photo[] = [
+  {
+    src: g("ambience-hall.jpg"),
+    alt: "The Gastrobar main room at night, its curved bar and high timber roof lit low",
+  },
+  {
+    src: g("ambience-bar.jpg"),
+    alt: "The counter after dark, pastry cases and coffee machines glowing against dark wood",
+  },
+  {
+    src: g("ambience-guests.jpg"),
+    alt: "Guests gathered at the counter with the garden windows behind them",
+  },
+  {
+    src: g("ambience-mezzanine.jpg"),
+    alt: "The dining room seen from the mezzanine, long tables beneath the clock",
+  },
+];
+
+export const gastrobarKitchen: Photo[] = [
+  { src: g("breakfast-platter.jpg"), alt: "A breakfast platter laid out overhead with bread, eggs and coffee" },
+  { src: g("lamb-chops.jpg"), alt: "Lamb chops searing in the pan with peppers and baby potatoes" },
+  { src: g("fried-fish.jpg"), alt: "A whole fried fish plated with chilli, herbs and crushed peanuts" },
+  { src: g("rice-bowl.jpg"), alt: "A rice bowl with prawn and chicken skewers, seen from above" },
+  { src: g("plated-fish.jpg"), alt: "A plated fish course being cut into at the table" },
+  { src: g("pesto-pasta.jpg"), alt: "A bowl of pesto penne finished with basil and parmesan" },
+  { src: g("chicken-tenders.jpg"), alt: "Crisp chicken tenders carried out on a teal plate with dipping sauce" },
+  { src: g("pancakes.jpg"), alt: "Pancakes with fresh fruit beside a doughnut and a danish" },
+];
+
+export const gastrobarBar: Photo[] = [
+  { src: g("cold-drinks.jpg"), alt: "Tall cold drinks lined up with mint and rosemary" },
+  { src: g("latte-art.jpg"), alt: "Latte art poured into a stoneware cup on a stack of cups" },
+  { src: g("iced-coffee.jpg"), alt: "Espresso poured over a frosted glass of iced coffee" },
+  { src: g("french-press.jpg"), alt: "Coffee poured from a french press into a waiting cup" },
+  { src: g("coffee-beans.jpg"), alt: "A handful of roasted beans dropping into the hopper" },
+  { src: g("waffle-tea.jpg"), alt: "A caramel waffle served with tea and coffee on a dark table" },
+];
+
+export const gastrobarGallery: Photo[] = [
+  gastrobarKitchen[0],
+  gastrobarBar[0],
+  gastrobarKitchen[2],
+  gastrobarBar[1],
+  gastrobarKitchen[1],
+  gastrobarBar[2],
+  gastrobarKitchen[3],
+  gastrobarBar[5],
+  gastrobarKitchen[5],
+  gastrobarBar[3],
+  gastrobarKitchen[6],
+  gastrobarKitchen[4],
+];
+
+export const gastrobarHero: Photo[] = gastrobarRooms;
+
 /* ---------------------------------- Landing --------------------------------- */
 
 export const landing = {
-  espresso: {
-    src: u("photo-1509042239860-f550ce710b93"),
-    alt: "A cup of freshly brewed coffee on a dark wooden counter",
-  },
+  gastrobar: gastrobarRooms[0],
   resort: {
     src: u("photo-1540541338287-41700207dee6"),
     alt: "A tropical resort swimming pool lined with palm trees",
   },
 };
 
-/* All five Grand locations — placeholder photos until real photography arrives. */
+/* The four Grand locations, south to north along the coast road. */
 export const locations: {
   town: string;
   name: string;
-  href?: string;
+  href: string;
+  tagline: string;
   photo: Photo;
 }[] = [
-  {
-    town: "Wennappuwa",
-    name: "The Grand Coffee Lounge",
-    href: "/coffee-lounge",
-    photo: { src: u("photo-1501339847302-ac426a4a7cbb", 900), alt: "Wooden tables inside a warmly lit coffee lounge" },
-  },
-  {
-    town: "Wennappuwa",
-    name: "Grand Holiday Resort",
-    href: "/resort",
-    photo: { src: u("photo-1571896349842-33c89424de2d", 900), alt: "The resort pool at dusk with loungers along its edge" },
-  },
   {
     town: "Negombo",
     name: "The Grand Gastrobar",
     href: "/gastrobar",
-    photo: { src: u("photo-1514933651103-005eec06c04b", 900), alt: "A softly lit bar lounge set for the evening" },
-  },
-  {
-    town: "Negombo",
-    name: "Grand Espresso Bar",
-    href: "/espresso",
-    photo: { src: u("photo-1495474472287-4d71bcdd2085", 900), alt: "A latte in a ceramic cup beside coffee beans" },
+    tagline: "Kitchen & bar",
+    photo: gastrobarRooms[0],
   },
   {
     town: "Katuneriya",
     name: "Grand Cafe",
     href: "/cafe",
-    photo: { src: u("photo-1554118811-1e0d58224f24", 900), alt: "The service counter of a warmly lit cafe" },
-  },
-];
-
-/* ------------------------------- Grand Espresso ------------------------------ */
-
-export const espressoHero: Photo[] = [
-  {
-    src: u("photo-1554118811-1e0d58224f24", 2000),
-    alt: "The service counter of a warmly lit coffee shop",
+    tagline: "Coffee & bakery",
+    photo: { src: u("photo-1554118811-1e0d58224f24", 1400), alt: "The service counter of a warmly lit cafe" },
   },
   {
-    src: u("photo-1495474472287-4d71bcdd2085", 2000),
-    alt: "A latte in a ceramic cup beside coffee beans",
+    town: "Wennappuwa",
+    name: "The Grand Coffee Lounge",
+    href: "/coffee-lounge",
+    tagline: "Coffee & private rooms",
+    photo: { src: u("photo-1501339847302-ac426a4a7cbb", 1400), alt: "Wooden tables inside a warmly lit coffee lounge" },
   },
   {
-    src: u("photo-1517433670267-08bbd4be890f", 2000),
-    alt: "Freshly baked pastries arranged on a bakery counter",
+    town: "Wennappuwa",
+    name: "Grand Holiday Resort",
+    href: "/resort",
+    tagline: "Weddings & stays",
+    photo: { src: u("photo-1571896349842-33c89424de2d", 1400), alt: "The resort pool at dusk with loungers along its edge" },
   },
-  {
-    src: u("photo-1521017432531-fbd92d768814", 2000),
-    alt: "Guests chatting at the wooden tables of a cosy cafe",
-  },
-];
-
-export const espressoAbout: Photo = {
-  src: u("photo-1559925393-8be0ec4767c8", 1200),
-  alt: "A quiet corner of the coffee lounge with cane chairs and soft light",
-};
-
-export const espressoGallery: Photo[] = [
-  { src: u("photo-1541167760496-1628856ab772", 1000), alt: "Latte art poured into a wide ceramic cup" },
-  { src: u("photo-1578985545062-69928b1d9587", 1000), alt: "A chocolate layer cake from the bakery counter" },
-  { src: u("photo-1555507036-ab1f4038808a", 1000), alt: "Golden croissants fresh from the oven" },
-  { src: u("photo-1572442388796-11668a67e53d", 1000), alt: "A cappuccino served on a dark wooden table" },
-  { src: u("photo-1501339847302-ac426a4a7cbb", 1000), alt: "The lounge interior with wooden tables set for guests" },
-  { src: u("photo-1509440159596-0249088772ff", 1000), alt: "Loaves and baked goods on the bakery display" },
-  { src: u("photo-1447933601403-0c6688de566e", 1000), alt: "Roasted coffee beans photographed up close" },
-  { src: u("photo-1464349095431-e9a21285b5f3", 1000), alt: "A colourful celebration cake ready for the party" },
 ];
 
 /* ---------------------------- Grand Holiday Resort ---------------------------- */
@@ -142,7 +164,7 @@ export const pavilionPhotos: Photo[] = [
 export const restaurantPhotos: Photo[] = [
   { src: u("photo-1555396273-367ea4eb4db5", 1200), alt: "The open restaurant with its buffet laid out" },
   { src: u("photo-1414235077428-338989a2e8c0", 1200), alt: "A dining table set with polished glassware" },
-  { src: u("photo-1555244162-803834f70033", 1200), alt: "A chef's dish served straight from the pan" },
+  { src: u("photo-1555244162-803834f70033", 1200), alt: "A chef dish served straight from the pan" },
 ];
 
 export const wetBarPhotos: Photo[] = [

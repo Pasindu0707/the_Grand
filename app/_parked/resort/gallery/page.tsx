@@ -7,7 +7,7 @@ import { resortGallery, resortHero } from "@/lib/images";
 export const metadata: Metadata = {
   title: "Gallery",
   description:
-    "Photographs of Grand Holiday Resort — banquet halls, the pool, restaurant, rooms, and gardens in Wennappuwa, Sri Lanka.",
+    "Photographs of Grand Holiday Resort - banquet halls, the pool, restaurant, rooms, and gardens in Wennappuwa, Sri Lanka.",
 };
 
 export default function ResortGalleryPage() {
