@@ -27,7 +27,7 @@ export default function Footer({
   const s = styles[brand];
   return (
     <footer className={s.bg}>
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-12 sm:px-8 md:flex-row md:items-end md:justify-between">
+      <div className="mx-auto flex max-w-[84rem] flex-col gap-8 px-5 py-12 sm:px-8 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="font-display text-2xl">{name}</p>
           <p className={`mt-1 text-[0.65rem] font-bold tracking-[0.24em] uppercase ${s.accent}`}>
@@ -55,8 +55,16 @@ export default function Footer({
         </div>
       </div>
       <div className="border-t border-white/10">
-        <p className="mx-auto max-w-6xl px-5 py-5 text-xs opacity-60 sm:px-8">
-          © Grand {new Date().getFullYear()}. All rights reserved.
+        <p className="mx-auto max-w-[84rem] px-5 py-5 text-xs opacity-60 sm:px-8">
+          © Grand {new Date().getFullYear()}. All rights reserved by{" "}
+          <a
+            href="https://www.facebook.com/profile.php?id=100093625762062"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-4 transition-opacity hover:opacity-100"
+          >
+            TRINIPHIX
+          </a>
         </p>
       </div>
     </footer>

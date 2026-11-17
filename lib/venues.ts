@@ -27,6 +27,10 @@ export type Venue = {
   hours: Hours[];
   mapSrc: string;
   mapTitle: string;
+  /** Opens the listing in Google Maps proper, for directions. */
+  mapLink?: string;
+  /** Latitude, longitude of the front door. */
+  geo?: { lat: number; lng: number };
   facebookPages: string[];
 };
 
@@ -69,9 +73,13 @@ export const venues: Record<"gastrobar" | "coffeeLounge" | "cafe", Venue> = {
       { days: "Friday - Saturday", time: "8.00 am - 12.00 am" },
       { days: "Sunday", time: "8.00 am - 11.00 pm" },
     ],
-    mapSrc:
-      "https://maps.google.com/maps?q=361+Colombo+Road,+Negombo,+Sri+Lanka&z=16&output=embed",
+    // Addressed by Google's own place id (CID) rather than a text search, so
+    // the pin lands on the listing itself instead of whatever the street
+    // address happens to geocode to.
+    mapSrc: "https://maps.google.com/maps?cid=12448657089760555270&output=embed",
     mapTitle: "Map showing The Grand Gastrobar at 361 Colombo Road, Negombo",
+    mapLink: "https://maps.google.com/?cid=12448657089760555270",
+    geo: { lat: 7.202469, lng: 79.852792 },
     facebookPages: ["The Grand", "The Grand Gastrobar"],
   },
 

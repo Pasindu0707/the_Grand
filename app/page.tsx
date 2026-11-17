@@ -23,6 +23,12 @@ const bookingHref = venue.whatsapp
     )}`
   : `tel:${venue.phones[0].tel}`;
 
+// Google's documented directions URL: hands off to the Maps app on a phone
+// and to the browser everywhere else, with the route left for the visitor.
+const directionsHref = venue.geo
+  ? `https://www.google.com/maps/dir/?api=1&destination=${venue.geo.lat},${venue.geo.lng}`
+  : venue.mapLink;
+
 export const metadata: Metadata = {
   title: venue.metaTitle,
   description: venue.metaDescription,
@@ -393,6 +399,30 @@ export default function GastrobarPage() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
+              <div className="mt-4 flex flex-wrap justify-end gap-x-6 gap-y-2">
+                <span className="flex flex-wrap gap-x-6 gap-y-2 text-[0.72rem] font-bold tracking-[0.18em] uppercase">
+                  {directionsHref && (
+                    <a
+                      href={directionsHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-caramel underline underline-offset-4 transition hover:text-ink"
+                    >
+                      Get directions
+                    </a>
+                  )}
+                  {venue.mapLink && (
+                    <a
+                      href={venue.mapLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-ink/50 underline underline-offset-4 transition hover:text-ink"
+                    >
+                      Open in Google Maps
+                    </a>
+                  )}
+                </span>
+              </div>
             </Reveal>
 
             <div className="mt-20 grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-16">

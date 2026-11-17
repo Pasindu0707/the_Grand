@@ -67,7 +67,7 @@ export default function SiteNav({
         solid ? styles.solid : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:h-[4.5rem] sm:px-8">
+      <div className="mx-auto flex h-16 max-w-[84rem] items-center justify-between px-5 sm:h-[4.5rem] sm:px-8">
         <div className="flex items-center gap-3.5">
           {hasLocationIndex && (
             <Link
